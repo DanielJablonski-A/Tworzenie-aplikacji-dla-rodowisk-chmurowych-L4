@@ -1,0 +1,63 @@
+# Ignorowanie plików systemowych
+.DS_Store
+Thumbs.db
+
+# Ignorowanie konfiguracji IDE
+.idea/
+.vscode/
+*.swp
+
+# Ignorowanie plików logów
+*.log
+
+# Ignorowanie cache i plików tymczasowych
+cache/
+tmp/
+*.cache
+*.tmp
+
+# Ignorowanie danych sesji
+sessions/
+
+# Ignorowanie vendor (w przypadku użycia Composera)
+vendor/
+
+# Ignorowanie plików Composera
+composer.lock
+
+# Ignorowanie plików env
+.env
+.env.*.local
+
+# Ignorowanie uploadów (jeśli przechowywane lokalnie)
+uploads/
+files/
+
+# Ignorowanie plików konfiguracji specyficznych dla serwera
+*.local.php
+*.config.php
+
+# Ignorowanie artefaktów buildów
+node_modules/
+dist/
+build/
+public/assets/
+public/static/
+
+# Ignorowanie plików PHPUnit
+phpunit.xml
+phpunit.xml.dist
+coverage/
+
+# Ignorowanie narzędzi deweloperskich (np. PHPStan, ECS)
+.phpunit.result.cache
+.php_cs.cache
+phpstan.neon
+ecs.yml
+
+# Ignorowanie logów i debugowania
+*.log
+*.out
+*.trace
+*.sql
+*.sqlite

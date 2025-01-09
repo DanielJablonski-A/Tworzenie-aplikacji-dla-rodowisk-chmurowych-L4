@@ -1,0 +1,44 @@
+# Ignorowanie folderu z zależnościami
+node_modules/
+
+# Ignorowanie logów
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Ignorowanie środowiskowych plików konfiguracyjnych
+.env
+.env.*.local
+
+# Ignorowanie plików tymczasowych
+.tmp/
+*.tmp
+*.cache
+*.swp
+*.pid
+*.seed
+*.pid.lock
+
+# Ignorowanie folderów build
+dist/
+build/
+
+# Ignorowanie artefaktów testowych
+coverage/
+.nyc_output/
+
+# Ignorowanie plików IDE/edytorów
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Ignorowanie konfiguracji systemowych
+.DS_Store
+Thumbs.db
+
+# Ignorowanie narzędzi deweloperskich
+.eslintcache
+.stylelintcache
+*.tsbuildinfo

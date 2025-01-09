@@ -1,0 +1,106 @@
+services:
+    vue:
+        build:
+            context: ./vue
+            dockerfile: Dockerfile
+        ports:
+            - "8080:8080"
+        volumes:
+            - ./vue:/app
+        environment:
+            VUE_APP_API_URL: http://php:8000
+        depends_on:
+            - php
+        networks:
+            - app_network
+
+    php:
+        build:
+            context: ./php
+            dockerfile: Dockerfile
+        ports:
+            - "8000:8000"
+        volumes:
+            - ./php:/app
+        depends_on:
+            rabbit:
+                condition: service_healthy
+            mysql:
+                condition: service_started
+        environment:
+            RABBITMQ_HOST: rabbit
+            RABBITMQ_PORT: 5672
+            MYSQL_HOST: mysql
+            MYSQL_PORT: 3306
+            MYSQL_DATABASE: app_db
+            MYSQL_USER: user
+            MYSQL_PASSWORD: password
+        networks:
+            - app_network
+
+    rabbit:
+        image: rabbitmq:3-management
+        ports:
+            - "15673:15672" # RabbitMQ Management UI
+            - "5673:5672"   # RabbitMQ Service Port wystawiono na 5673
+        environment:
+            RABBITMQ_DEFAULT_USER: guest
+            RABBITMQ_DEFAULT_PASS: guest
+        healthcheck:
+            test: ["CMD", "rabbitmq-diagnostics", "ping"]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+        networks:
+            - app_network
+
+    nodejs:
+        build:
+            context: ./nodejs
+            dockerfile: Dockerfile
+        ports:
+            - "3000:3000"
+            - "3001:3001"
+        volumes:
+            - ./nodejs:/app
+        depends_on:
+            rabbit:
+                condition: service_healthy
+            mysql:
+                condition: service_started
+        environment:
+            RABBITMQ_HOST: rabbit
+            RABBITMQ_PORT: 5672
+            MYSQL_HOST: mysql
+            MYSQL_PORT: 3306
+            MYSQL_DATABASE: app_db
+            MYSQL_USER: user
+            MYSQL_PASSWORD: password
+        networks:
+            - app_network
+
+    mysql:
+        image: mysql:8.0
+        ports:
+            - "3307:3306"
+        volumes:
+            - mysql_data:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: root_password
+            MYSQL_DATABASE: app_db
+            MYSQL_USER: user
+            MYSQL_PASSWORD: password
+        healthcheck:
+            test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+            interval: 10s
+            timeout: 5s
+            retries: 3
+        networks:
+            - app_network
+
+networks:
+    app_network:
+        driver: bridge
+
+volumes:
+    mysql_data:

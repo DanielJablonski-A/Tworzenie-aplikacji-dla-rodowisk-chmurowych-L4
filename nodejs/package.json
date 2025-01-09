@@ -1,0 +1,17 @@
+{
+  "name": "nodejs-rabbit-websocket",
+  "version": "1.0.0",
+  "description": "Node.js server that reads messages from RabbitMQ and broadcasts them over WebSocket",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "amqplib": "^0.10.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "mysql2": "^3.12.0",
+    "retry": "^0.13.1",
+    "ws": "^8.13.0"
+  }
+}
