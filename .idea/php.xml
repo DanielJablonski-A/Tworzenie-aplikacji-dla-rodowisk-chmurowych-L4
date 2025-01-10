@@ -10,6 +10,15 @@
     <option name="highlightLevel" value="WARNING" />
     <option name="transferred" value="true" />
   </component>
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/php/vendor/composer" />
+      <path value="$PROJECT_DIR$/php/vendor/php-amqplib/php-amqplib" />
+      <path value="$PROJECT_DIR$/php/vendor/phpseclib/phpseclib" />
+      <path value="$PROJECT_DIR$/php/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/php/vendor/paragonie/constant_time_encoding" />
+    </include_path>
+  </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />
   <component name="PhpStanOptionsConfiguration">
     <option name="transferred" value="true" />

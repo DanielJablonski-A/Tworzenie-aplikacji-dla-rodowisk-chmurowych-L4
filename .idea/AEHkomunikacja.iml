@@ -3,6 +3,11 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/backend/var" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/paragonie/constant_time_encoding" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/paragonie/random_compat" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/php-amqplib/php-amqplib" />
+      <excludeFolder url="file://$MODULE_DIR$/php/vendor/phpseclib/phpseclib" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
