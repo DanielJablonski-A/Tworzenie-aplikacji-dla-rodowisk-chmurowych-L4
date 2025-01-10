@@ -42,7 +42,7 @@ const RABBITMQ_PORT = process.env.RABBITMQ_PORT || "5673";
 const MAX_RETRIES = 10;
 const RETRY_DELAY = 5000; // 5 seconds
 
-const wss = new WebSocket.Server({ port: portWebsocketServer });
+const wss = new WebSocket.Server({host: '0.0.0.0', port: portWebsocketServer });
 
 async function connectWithRetry(retries) {
     try {

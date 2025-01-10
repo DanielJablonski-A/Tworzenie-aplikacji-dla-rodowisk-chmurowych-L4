@@ -44,7 +44,7 @@ export default {
     const sendMessage = async () => {
       if (!message.value) return alert("Message cannot be empty.");
       try {
-        let response = await axios.post("http://localhost:8000/api/send-message", {
+        let response = await axios.post("http://aehauction.ovh:8000/api/send-message", {
           message: message.value + ' | Wysłano Vue',
         });
         console.log(response.data.error);
@@ -61,7 +61,7 @@ export default {
 
     onMounted(() => {
       // Connect to WebSocket server
-      websocket.value = new WebSocket("ws://localhost:3000");
+      websocket.value = new WebSocket("ws://aehauction.ovh:3000");
 
       websocket.value.onmessage = (event) => {
         const data = JSON.parse(event.data);
@@ -73,7 +73,7 @@ export default {
 
       // get mysql data
       const fetchMysqlData = () => {
-        axios.get('http://localhost:3001/api/data')
+        axios.get('http://aehauction.ovh:3001/api/data')
             .then(response => {
               mysqlData.value = response.data;
               console.log(mysqlData.value);
